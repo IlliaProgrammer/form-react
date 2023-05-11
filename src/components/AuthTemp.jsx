@@ -1,5 +1,5 @@
 import {React, useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { EMAIL_VALID, LOGIN_ROUTE, NAME_VALID, REGISTRATION_ROUTE, PASSWORD_VALID } from '../utils/consts';
 import Input from '../components/Input';
 import {FaUserCircle} from 'react-icons/fa'
@@ -17,6 +17,7 @@ const AuthTemp = () => {
     const [rememberMe, setRememberMe] = useState(false);
 
     const rememberMeChecked = localStorage.getItem('rememberMe') === 'true';
+    const navigate = useNavigate();
 
     useEffect(()=> {
       if (rememberMe) {
@@ -76,6 +77,7 @@ const AuthTemp = () => {
     }
     const handleSubmit = (e) => {
       e.preventDefault();
+      navigate(LOGIN_ROUTE)
       alert('successfully!!');
     }
   
